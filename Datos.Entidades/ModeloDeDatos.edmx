@@ -1,0 +1,1358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_ACTIVIDAD" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_ACTIVIDAD" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="VALOR" Type="varchar2" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADMINISTRADOR">
+          <Key>
+            <PropertyRef Name="ID_ADMINISTRADOR" />
+          </Key>
+          <Property Name="ID_ADMINISTRADOR" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ID_ROL" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="CONTRASENA_ADM" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NOMBRE_ADM" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="APELLIDO_ADM" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="TELEFONO_ADM" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="CORREO_ADM" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CHECK_LIST">
+          <Key>
+            <PropertyRef Name="ID_FORMULARIO" />
+          </Key>
+          <Property Name="ID_FORMULARIO" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="RUT_CLIENTE" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="PREGUNTA_1" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PREGUNTA_2" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PREGUNTA_3" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PREGUNTA_4" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PREGUNTE_5" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PREGUNTE_6" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PREGUNTA_7" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PREGUNTA_8" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PREGUNTA_9" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="MEJORA_ACTIVIDAD" Type="varchar2" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="RUT_CLIENTE" />
+          </Key>
+          <Property Name="RUT_CLIENTE" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="ID_ROL" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="CONTRASENA_CLIENTE" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NOMBRE_CLIENTE" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="APELLIDO_CLIENTE" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="NOMBRE_EMPRESA" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="RUBRO_EMPRESA" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="TELEFONO_CLIENTE" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="CORREO_CLIENTE" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATO">
+          <Key>
+            <PropertyRef Name="ID_CONTRATO" />
+          </Key>
+          <Property Name="ID_CONTRATO" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="RUT_CLIENTE" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="ESTADO_CONTRATO" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="FECHA_INICIO_CONTRATO" Type="date" Nullable="false" />
+          <Property Name="FECHA_TERMINO_CONTRATO" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DETALLE_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="REGISTRO_ACTIVIDAD" />
+          </Key>
+          <Property Name="REGISTRO_ACTIVIDAD" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ID_PROFESIONAL" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="UBICACION" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="FECHA_ACTIVIDAD" Type="date" Nullable="false" />
+          <Property Name="ASISTENTE" Type="number" Precision="10" Scale="0" />
+          <Property Name="MATERIAL" Type="varchar2" MaxLength="100" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ESTADO_ALERTA">
+          <Key>
+            <PropertyRef Name="ESTADO_ALERTA" />
+          </Key>
+          <Property Name="ESTADO_ALERTA" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_ESTADO" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESTADO_CONTRATO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO" />
+          </Key>
+          <Property Name="ID_ESTADO" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="TIPO_ESTADO" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESTADO_INTERACCION">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_INTERACCION" />
+          </Key>
+          <Property Name="ID_ESTADO_INTERACCION" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ESTADO_INTERACCION" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESTADO_SOLICITUD">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_SOLICITUD" />
+          </Key>
+          <Property Name="ID_ESTADO_SOLICITUD" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ESTADO_SOLICITUD" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INTERACCION">
+          <Key>
+            <PropertyRef Name="ID_INTERACCION" />
+          </Key>
+          <Property Name="ID_INTERACCION" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="RUT_CLIENTE" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="FECHA_INTERACCION" Type="date" Nullable="false" />
+          <Property Name="ESTADO_INTERACCION" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ID_TIPO_INTERACCION" Type="number" Precision="8" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PAGO">
+          <Key>
+            <PropertyRef Name="ID_PAGO" />
+          </Key>
+          <Property Name="ID_PAGO" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="RUT_PAGO" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="FECHA_PAGO" Type="date" Nullable="false" />
+          <Property Name="VALOR_PAGO" Type="varchar2" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROFESIONAL">
+          <Key>
+            <PropertyRef Name="ID_PROFESIONAL" />
+          </Key>
+          <Property Name="ID_PROFESIONAL" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ID_ROL" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="CONTRASENA_PRO" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NOMBRE_PRO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="APELLIDO_PRO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="TELEFONO_PRO" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="CORREO_PRO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="CALIFICACION" Type="number" Precision="2" Scale="0" />
+        </EntityType>
+        <EntityType Name="PUNTAJE">
+          <Key>
+            <PropertyRef Name="ID_PUNTAJE" />
+          </Key>
+          <Property Name="ID_PUNTAJE" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="PUNTAJE" Type="number" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REGISTRO_ALERTA">
+          <Key>
+            <PropertyRef Name="ID_ALERTA" />
+          </Key>
+          <Property Name="ID_ALERTA" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="TIPO_ALERTA" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="RUT_CLIENTE" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="FECHA_ALERTA" Type="date" Nullable="false" />
+          <Property Name="DESCRIPCION_ALERTA" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="ESTADO_ALERTA" Type="number" Precision="8" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_ROL" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SOLICITUD">
+          <Key>
+            <PropertyRef Name="ID_SOLICITUD" />
+          </Key>
+          <Property Name="ID_SOLICITUD" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="RUT_CLIENTE" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="UBICACION_SOLICITUD" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="FECHA_SOLICITUD" Type="date" Nullable="false" />
+          <Property Name="FECHA_RESOLUCION" Type="date" Nullable="false" />
+          <Property Name="PROFESIONAL_ASIGNADO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="MENSAJE" Type="varchar2" MaxLength="500" Nullable="false" />
+          <Property Name="ASISTENTE_SOLICITUD" Type="number" Precision="10" Scale="0" />
+          <Property Name="ESTADO_SOLICITUD" Type="number" Precision="8" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_ALERTA">
+          <Key>
+            <PropertyRef Name="ID_TIPO" />
+          </Key>
+          <Property Name="ID_TIPO" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="TIPO_ALERTA" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_INTERACCION">
+          <Key>
+            <PropertyRef Name="ID_TIPO_INTERACCION" />
+          </Key>
+          <Property Name="ID_TIPO_INTERACCION" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="TIPO_INTERACCION" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MAIKEL.VALORACIONES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VALORACIONES">
+          <Key>
+            <PropertyRef Name="ID_PROFESIONAL" />
+            <PropertyRef Name="VALORACION" />
+            <PropertyRef Name="ACTIVIDAD_DESARROLLADA" />
+            <PropertyRef Name="ID_PUNTAJE" />
+          </Key>
+          <Property Name="ID_PROFESIONAL" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="VALORACION" Type="number" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="ACTIVIDAD_DESARROLLADA" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="ID_PUNTAJE" Type="number" Precision="8" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="ADMINISTRADOR_ROL_FK">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="ADMINISTRADOR" Type="Self.ADMINISTRADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="ADMINISTRADOR">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Check List_cliente_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CHECK_LIST" Type="Self.CHECK_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Principal>
+            <Dependent Role="CHECK_LIST">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTE_ROL_FK">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_CLIENTE_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_ESTADO_CONTRATO_FK">
+          <End Role="ESTADO_CONTRATO" Type="Self.ESTADO_CONTRATO" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_CONTRATO">
+              <PropertyRef Name="ID_ESTADO" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="ESTADO_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLE_ACTIVIDAD_ACTIVIDAD_FK">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="DETALLE_ACTIVIDAD" Type="Self.DETALLE_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="DETALLE_ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLE_ACTIVIDAD_FK">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="1" />
+          <End Role="DETALLE_ACTIVIDAD" Type="Self.DETALLE_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Principal>
+            <Dependent Role="DETALLE_ACTIVIDAD">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ESTADO_ALERTA_FK">
+          <End Role="ESTADO_ALERTA" Type="Self.ESTADO_ALERTA" Multiplicity="1" />
+          <End Role="REGISTRO_ALERTA" Type="Self.REGISTRO_ALERTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_ALERTA">
+              <PropertyRef Name="ESTADO_ALERTA" />
+            </Principal>
+            <Dependent Role="REGISTRO_ALERTA">
+              <PropertyRef Name="ESTADO_ALERTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ESTADO_INTERACCION_FK">
+          <End Role="ESTADO_INTERACCION" Type="Self.ESTADO_INTERACCION" Multiplicity="1" />
+          <End Role="INTERACCION" Type="Self.INTERACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_INTERACCION">
+              <PropertyRef Name="ID_ESTADO_INTERACCION" />
+            </Principal>
+            <Dependent Role="INTERACCION">
+              <PropertyRef Name="ESTADO_INTERACCION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INTERACCION_CLIENTE_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="INTERACCION" Type="Self.INTERACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Principal>
+            <Dependent Role="INTERACCION">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PROFESIONAL_ACTIVIDAD_FK">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="PROFESIONAL">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PROFESIONAL_ROL_FK">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="PROFESIONAL">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGISTRO_ALERTA_CLIENTE_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="REGISTRO_ALERTA" Type="Self.REGISTRO_ALERTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Principal>
+            <Dependent Role="REGISTRO_ALERTA">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGISTRO_ALERTA_TIPO_ALERTA_FK">
+          <End Role="TIPO_ALERTA" Type="Self.TIPO_ALERTA" Multiplicity="1" />
+          <End Role="REGISTRO_ALERTA" Type="Self.REGISTRO_ALERTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_ALERTA">
+              <PropertyRef Name="ID_TIPO" />
+            </Principal>
+            <Dependent Role="REGISTRO_ALERTA">
+              <PropertyRef Name="TIPO_ALERTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SOLICITUD_CLIENTE_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="SOLICITUD" Type="Self.SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Principal>
+            <Dependent Role="SOLICITUD">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SOLICITUD_ESTADO_SOLICITUD_FK">
+          <End Role="ESTADO_SOLICITUD" Type="Self.ESTADO_SOLICITUD" Multiplicity="1" />
+          <End Role="SOLICITUD" Type="Self.SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_SOLICITUD">
+              <PropertyRef Name="ID_ESTADO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUD">
+              <PropertyRef Name="ESTADO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TIPO_INTERACCION_FK">
+          <End Role="TIPO_INTERACCION" Type="Self.TIPO_INTERACCION" Multiplicity="1" />
+          <End Role="INTERACCION" Type="Self.INTERACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_INTERACCION">
+              <PropertyRef Name="ID_TIPO_INTERACCION" />
+            </Principal>
+            <Dependent Role="INTERACCION">
+              <PropertyRef Name="ID_TIPO_INTERACCION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VALORACIONES_PROFESIONAL_FK">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="1" />
+          <End Role="VALORACIONES" Type="Self.VALORACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Principal>
+            <Dependent Role="VALORACIONES">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VALORACIONES_PUNTAJE_FK">
+          <End Role="PUNTAJE" Type="Self.PUNTAJE" Multiplicity="1" />
+          <End Role="VALORACIONES" Type="Self.VALORACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUNTAJE">
+              <PropertyRef Name="ID_PUNTAJE" />
+            </Principal>
+            <Dependent Role="VALORACIONES">
+              <PropertyRef Name="ID_PUNTAJE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="ADMINISTRADOR" EntityType="Self.ADMINISTRADOR" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="CHECK_LIST" EntityType="Self.CHECK_LIST" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="DETALLE_ACTIVIDAD" EntityType="Self.DETALLE_ACTIVIDAD" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="ESTADO_ALERTA" EntityType="Self.ESTADO_ALERTA" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="ESTADO_CONTRATO" EntityType="Self.ESTADO_CONTRATO" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="ESTADO_INTERACCION" EntityType="Self.ESTADO_INTERACCION" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="ESTADO_SOLICITUD" EntityType="Self.ESTADO_SOLICITUD" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="INTERACCION" EntityType="Self.INTERACCION" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="PAGO" EntityType="Self.PAGO" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="PROFESIONAL" EntityType="Self.PROFESIONAL" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="PUNTAJE" EntityType="Self.PUNTAJE" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="REGISTRO_ALERTA" EntityType="Self.REGISTRO_ALERTA" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="SOLICITUD" EntityType="Self.SOLICITUD" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="TIPO_ALERTA" EntityType="Self.TIPO_ALERTA" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="TIPO_INTERACCION" EntityType="Self.TIPO_INTERACCION" Schema="MAIKEL" store:Type="Tables" />
+          <EntitySet Name="VALORACIONES" EntityType="Self.VALORACIONES" store:Type="Tables" store:Schema="MAIKEL">
+            <DefiningQuery>SELECT 
+"VALORACIONES"."ID_PROFESIONAL" AS "ID_PROFESIONAL", 
+"VALORACIONES"."VALORACION" AS "VALORACION", 
+"VALORACIONES"."ACTIVIDAD_DESARROLLADA" AS "ACTIVIDAD_DESARROLLADA", 
+"VALORACIONES"."ID_PUNTAJE" AS "ID_PUNTAJE"
+FROM "MAIKEL"."VALORACIONES" "VALORACIONES"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="ADMINISTRADOR_ROL_FK" Association="Self.ADMINISTRADOR_ROL_FK">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="ADMINISTRADOR" EntitySet="ADMINISTRADOR" />
+          </AssociationSet>
+          <AssociationSet Name="Check List_cliente_FK" Association="Self.Check List_cliente_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="CHECK_LIST" EntitySet="CHECK_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTE_ROL_FK" Association="Self.CLIENTE_ROL_FK">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_CLIENTE_FK" Association="Self.CONTRATO_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_ESTADO_CONTRATO_FK" Association="Self.CONTRATO_ESTADO_CONTRATO_FK">
+            <End Role="ESTADO_CONTRATO" EntitySet="ESTADO_CONTRATO" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLE_ACTIVIDAD_ACTIVIDAD_FK" Association="Self.DETALLE_ACTIVIDAD_ACTIVIDAD_FK">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="DETALLE_ACTIVIDAD" EntitySet="DETALLE_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLE_ACTIVIDAD_FK" Association="Self.DETALLE_ACTIVIDAD_FK">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="DETALLE_ACTIVIDAD" EntitySet="DETALLE_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ESTADO_ALERTA_FK" Association="Self.ESTADO_ALERTA_FK">
+            <End Role="ESTADO_ALERTA" EntitySet="ESTADO_ALERTA" />
+            <End Role="REGISTRO_ALERTA" EntitySet="REGISTRO_ALERTA" />
+          </AssociationSet>
+          <AssociationSet Name="ESTADO_INTERACCION_FK" Association="Self.ESTADO_INTERACCION_FK">
+            <End Role="ESTADO_INTERACCION" EntitySet="ESTADO_INTERACCION" />
+            <End Role="INTERACCION" EntitySet="INTERACCION" />
+          </AssociationSet>
+          <AssociationSet Name="INTERACCION_CLIENTE_FK" Association="Self.INTERACCION_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="INTERACCION" EntitySet="INTERACCION" />
+          </AssociationSet>
+          <AssociationSet Name="PROFESIONAL_ACTIVIDAD_FK" Association="Self.PROFESIONAL_ACTIVIDAD_FK">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+          </AssociationSet>
+          <AssociationSet Name="PROFESIONAL_ROL_FK" Association="Self.PROFESIONAL_ROL_FK">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+          </AssociationSet>
+          <AssociationSet Name="REGISTRO_ALERTA_CLIENTE_FK" Association="Self.REGISTRO_ALERTA_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="REGISTRO_ALERTA" EntitySet="REGISTRO_ALERTA" />
+          </AssociationSet>
+          <AssociationSet Name="REGISTRO_ALERTA_TIPO_ALERTA_FK" Association="Self.REGISTRO_ALERTA_TIPO_ALERTA_FK">
+            <End Role="TIPO_ALERTA" EntitySet="TIPO_ALERTA" />
+            <End Role="REGISTRO_ALERTA" EntitySet="REGISTRO_ALERTA" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUD_CLIENTE_FK" Association="Self.SOLICITUD_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUD_ESTADO_SOLICITUD_FK" Association="Self.SOLICITUD_ESTADO_SOLICITUD_FK">
+            <End Role="ESTADO_SOLICITUD" EntitySet="ESTADO_SOLICITUD" />
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="TIPO_INTERACCION_FK" Association="Self.TIPO_INTERACCION_FK">
+            <End Role="TIPO_INTERACCION" EntitySet="TIPO_INTERACCION" />
+            <End Role="INTERACCION" EntitySet="INTERACCION" />
+          </AssociationSet>
+          <AssociationSet Name="VALORACIONES_PROFESIONAL_FK" Association="Self.VALORACIONES_PROFESIONAL_FK">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="VALORACIONES" EntitySet="VALORACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="VALORACIONES_PUNTAJE_FK" Association="Self.VALORACIONES_PUNTAJE_FK">
+            <End Role="PUNTAJE" EntitySet="PUNTAJE" />
+            <End Role="VALORACIONES" EntitySet="VALORACIONES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_ACTIVIDAD" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_ACTIVIDAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VALOR" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DETALLE_ACTIVIDAD" Relationship="Self.DETALLE_ACTIVIDAD_ACTIVIDAD_FK" FromRole="ACTIVIDAD" ToRole="DETALLE_ACTIVIDAD" />
+          <NavigationProperty Name="PROFESIONAL" Relationship="Self.PROFESIONAL_ACTIVIDAD_FK" FromRole="ACTIVIDAD" ToRole="PROFESIONAL" />
+        </EntityType>
+        <EntityType Name="ADMINISTRADOR">
+          <Key>
+            <PropertyRef Name="ID_ADMINISTRADOR" />
+          </Key>
+          <Property Name="ID_ADMINISTRADOR" Type="Int32" Nullable="false" />
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" />
+          <Property Name="CONTRASENA_ADM" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_ADM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO_ADM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO_ADM" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO_ADM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ROL" Relationship="Self.ADMINISTRADOR_ROL_FK" FromRole="ADMINISTRADOR" ToRole="ROL" />
+        </EntityType>
+        <EntityType Name="CHECK_LIST">
+          <Key>
+            <PropertyRef Name="ID_FORMULARIO" />
+          </Key>
+          <Property Name="ID_FORMULARIO" Type="Int32" Nullable="false" />
+          <Property Name="RUT_CLIENTE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PREGUNTA_1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PREGUNTA_2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PREGUNTA_3" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PREGUNTA_4" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PREGUNTE_5" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PREGUNTE_6" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PREGUNTA_7" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PREGUNTA_8" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PREGUNTA_9" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MEJORA_ACTIVIDAD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.Check_List_cliente_FK" FromRole="CHECK_LIST" ToRole="CLIENTE" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="RUT_CLIENTE" />
+          </Key>
+          <Property Name="RUT_CLIENTE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" />
+          <Property Name="CONTRASENA_CLIENTE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_CLIENTE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO_CLIENTE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_EMPRESA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUBRO_EMPRESA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO_CLIENTE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO_CLIENTE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CHECK_LIST" Relationship="Self.Check_List_cliente_FK" FromRole="CLIENTE" ToRole="CHECK_LIST" />
+          <NavigationProperty Name="ROL" Relationship="Self.CLIENTE_ROL_FK" FromRole="CLIENTE" ToRole="ROL" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_CLIENTE_FK" FromRole="CLIENTE" ToRole="CONTRATO" />
+          <NavigationProperty Name="INTERACCION" Relationship="Self.INTERACCION_CLIENTE_FK" FromRole="CLIENTE" ToRole="INTERACCION" />
+          <NavigationProperty Name="REGISTRO_ALERTA" Relationship="Self.REGISTRO_ALERTA_CLIENTE_FK" FromRole="CLIENTE" ToRole="REGISTRO_ALERTA" />
+          <NavigationProperty Name="SOLICITUD" Relationship="Self.SOLICITUD_CLIENTE_FK" FromRole="CLIENTE" ToRole="SOLICITUD" />
+        </EntityType>
+        <EntityType Name="CONTRATO">
+          <Key>
+            <PropertyRef Name="ID_CONTRATO" />
+          </Key>
+          <Property Name="ID_CONTRATO" Type="Int32" Nullable="false" />
+          <Property Name="RUT_CLIENTE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO_CONTRATO" Type="Int32" Nullable="false" />
+          <Property Name="FECHA_INICIO_CONTRATO" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_TERMINO_CONTRATO" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.CONTRATO_CLIENTE_FK" FromRole="CONTRATO" ToRole="CLIENTE" />
+          <NavigationProperty Name="ESTADO_CONTRATO1" Relationship="Self.CONTRATO_ESTADO_CONTRATO_FK" FromRole="CONTRATO" ToRole="ESTADO_CONTRATO" />
+        </EntityType>
+        <EntityType Name="DETALLE_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="REGISTRO_ACTIVIDAD" />
+          </Key>
+          <Property Name="REGISTRO_ACTIVIDAD" Type="Int32" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="Int32" Nullable="false" />
+          <Property Name="ID_PROFESIONAL" Type="Int32" Nullable="false" />
+          <Property Name="UBICACION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_ACTIVIDAD" Type="DateTime" Nullable="false" />
+          <Property Name="ASISTENTE" Type="Int32" />
+          <Property Name="MATERIAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.DETALLE_ACTIVIDAD_ACTIVIDAD_FK" FromRole="DETALLE_ACTIVIDAD" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="PROFESIONAL" Relationship="Self.DETALLE_ACTIVIDAD_FK" FromRole="DETALLE_ACTIVIDAD" ToRole="PROFESIONAL" />
+        </EntityType>
+        <EntityType Name="ESTADO_ALERTA">
+          <Key>
+            <PropertyRef Name="ESTADO_ALERTA1" />
+          </Key>
+          <Property Name="ESTADO_ALERTA1" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_ESTADO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="REGISTRO_ALERTA" Relationship="Self.ESTADO_ALERTA_FK" FromRole="ESTADO_ALERTA" ToRole="REGISTRO_ALERTA" />
+        </EntityType>
+        <EntityType Name="ESTADO_CONTRATO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO" />
+          </Key>
+          <Property Name="ID_ESTADO" Type="Int32" Nullable="false" />
+          <Property Name="TIPO_ESTADO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_ESTADO_CONTRATO_FK" FromRole="ESTADO_CONTRATO" ToRole="CONTRATO" />
+        </EntityType>
+        <EntityType Name="ESTADO_INTERACCION">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_INTERACCION" />
+          </Key>
+          <Property Name="ID_ESTADO_INTERACCION" Type="Int32" Nullable="false" />
+          <Property Name="ESTADO_INTERACCION1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="INTERACCION" Relationship="Self.ESTADO_INTERACCION_FK" FromRole="ESTADO_INTERACCION" ToRole="INTERACCION" />
+        </EntityType>
+        <EntityType Name="ESTADO_SOLICITUD">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_SOLICITUD" />
+          </Key>
+          <Property Name="ID_ESTADO_SOLICITUD" Type="Int32" Nullable="false" />
+          <Property Name="ESTADO_SOLICITUD1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SOLICITUD" Relationship="Self.SOLICITUD_ESTADO_SOLICITUD_FK" FromRole="ESTADO_SOLICITUD" ToRole="SOLICITUD" />
+        </EntityType>
+        <EntityType Name="INTERACCION">
+          <Key>
+            <PropertyRef Name="ID_INTERACCION" />
+          </Key>
+          <Property Name="ID_INTERACCION" Type="Int32" Nullable="false" />
+          <Property Name="RUT_CLIENTE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_INTERACCION" Type="DateTime" Nullable="false" />
+          <Property Name="ESTADO_INTERACCION" Type="Int32" Nullable="false" />
+          <Property Name="ID_TIPO_INTERACCION" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.INTERACCION_CLIENTE_FK" FromRole="INTERACCION" ToRole="CLIENTE" />
+          <NavigationProperty Name="ESTADO_INTERACCION1" Relationship="Self.ESTADO_INTERACCION_FK" FromRole="INTERACCION" ToRole="ESTADO_INTERACCION" />
+          <NavigationProperty Name="TIPO_INTERACCION" Relationship="Self.TIPO_INTERACCION_FK" FromRole="INTERACCION" ToRole="TIPO_INTERACCION" />
+        </EntityType>
+        <EntityType Name="PAGO">
+          <Key>
+            <PropertyRef Name="ID_PAGO" />
+          </Key>
+          <Property Name="ID_PAGO" Type="Int32" Nullable="false" />
+          <Property Name="RUT_PAGO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_PAGO" Type="DateTime" Nullable="false" />
+          <Property Name="VALOR_PAGO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROFESIONAL">
+          <Key>
+            <PropertyRef Name="ID_PROFESIONAL" />
+          </Key>
+          <Property Name="ID_PROFESIONAL" Type="Int32" Nullable="false" />
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="Int32" Nullable="false" />
+          <Property Name="CONTRASENA_PRO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_PRO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO_PRO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO_PRO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO_PRO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CALIFICACION" Type="Byte" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.PROFESIONAL_ACTIVIDAD_FK" FromRole="PROFESIONAL" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="DETALLE_ACTIVIDAD" Relationship="Self.DETALLE_ACTIVIDAD_FK" FromRole="PROFESIONAL" ToRole="DETALLE_ACTIVIDAD" />
+          <NavigationProperty Name="ROL" Relationship="Self.PROFESIONAL_ROL_FK" FromRole="PROFESIONAL" ToRole="ROL" />
+          <NavigationProperty Name="VALORACIONES" Relationship="Self.VALORACIONES_PROFESIONAL_FK" FromRole="PROFESIONAL" ToRole="VALORACIONES" />
+        </EntityType>
+        <EntityType Name="PUNTAJE">
+          <Key>
+            <PropertyRef Name="ID_PUNTAJE" />
+          </Key>
+          <Property Name="ID_PUNTAJE" Type="Int32" Nullable="false" />
+          <Property Name="PUNTAJE1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VALORACIONES" Relationship="Self.VALORACIONES_PUNTAJE_FK" FromRole="PUNTAJE" ToRole="VALORACIONES" />
+        </EntityType>
+        <EntityType Name="REGISTRO_ALERTA">
+          <Key>
+            <PropertyRef Name="ID_ALERTA" />
+          </Key>
+          <Property Name="ID_ALERTA" Type="Int32" Nullable="false" />
+          <Property Name="TIPO_ALERTA" Type="Int32" Nullable="false" />
+          <Property Name="RUT_CLIENTE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_ALERTA" Type="DateTime" Nullable="false" />
+          <Property Name="DESCRIPCION_ALERTA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO_ALERTA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.REGISTRO_ALERTA_CLIENTE_FK" FromRole="REGISTRO_ALERTA" ToRole="CLIENTE" />
+          <NavigationProperty Name="ESTADO_ALERTA1" Relationship="Self.ESTADO_ALERTA_FK" FromRole="REGISTRO_ALERTA" ToRole="ESTADO_ALERTA" />
+          <NavigationProperty Name="TIPO_ALERTA1" Relationship="Self.REGISTRO_ALERTA_TIPO_ALERTA_FK" FromRole="REGISTRO_ALERTA" ToRole="TIPO_ALERTA" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_ROL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ADMINISTRADOR" Relationship="Self.ADMINISTRADOR_ROL_FK" FromRole="ROL" ToRole="ADMINISTRADOR" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.CLIENTE_ROL_FK" FromRole="ROL" ToRole="CLIENTE" />
+          <NavigationProperty Name="PROFESIONAL" Relationship="Self.PROFESIONAL_ROL_FK" FromRole="ROL" ToRole="PROFESIONAL" />
+        </EntityType>
+        <EntityType Name="SOLICITUD">
+          <Key>
+            <PropertyRef Name="ID_SOLICITUD" />
+          </Key>
+          <Property Name="ID_SOLICITUD" Type="Int32" Nullable="false" />
+          <Property Name="RUT_CLIENTE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UBICACION_SOLICITUD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_SOLICITUD" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_RESOLUCION" Type="DateTime" Nullable="false" />
+          <Property Name="PROFESIONAL_ASIGNADO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MENSAJE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ASISTENTE_SOLICITUD" Type="Int32" />
+          <Property Name="ESTADO_SOLICITUD" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.SOLICITUD_CLIENTE_FK" FromRole="SOLICITUD" ToRole="CLIENTE" />
+          <NavigationProperty Name="ESTADO_SOLICITUD1" Relationship="Self.SOLICITUD_ESTADO_SOLICITUD_FK" FromRole="SOLICITUD" ToRole="ESTADO_SOLICITUD" />
+        </EntityType>
+        <EntityType Name="TIPO_ALERTA">
+          <Key>
+            <PropertyRef Name="ID_TIPO" />
+          </Key>
+          <Property Name="ID_TIPO" Type="Int32" Nullable="false" />
+          <Property Name="TIPO_ALERTA1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="REGISTRO_ALERTA" Relationship="Self.REGISTRO_ALERTA_TIPO_ALERTA_FK" FromRole="TIPO_ALERTA" ToRole="REGISTRO_ALERTA" />
+        </EntityType>
+        <EntityType Name="TIPO_INTERACCION">
+          <Key>
+            <PropertyRef Name="ID_TIPO_INTERACCION" />
+          </Key>
+          <Property Name="ID_TIPO_INTERACCION" Type="Int32" Nullable="false" />
+          <Property Name="TIPO_INTERACCION1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="INTERACCION" Relationship="Self.TIPO_INTERACCION_FK" FromRole="TIPO_INTERACCION" ToRole="INTERACCION" />
+        </EntityType>
+        <EntityType Name="VALORACIONES">
+          <Key>
+            <PropertyRef Name="ID_PROFESIONAL" />
+            <PropertyRef Name="VALORACION" />
+            <PropertyRef Name="ACTIVIDAD_DESARROLLADA" />
+            <PropertyRef Name="ID_PUNTAJE" />
+          </Key>
+          <Property Name="ID_PROFESIONAL" Type="Int32" Nullable="false" />
+          <Property Name="VALORACION" Type="Byte" Nullable="false" />
+          <Property Name="ACTIVIDAD_DESARROLLADA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PUNTAJE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PROFESIONAL" Relationship="Self.VALORACIONES_PROFESIONAL_FK" FromRole="VALORACIONES" ToRole="PROFESIONAL" />
+          <NavigationProperty Name="PUNTAJE" Relationship="Self.VALORACIONES_PUNTAJE_FK" FromRole="VALORACIONES" ToRole="PUNTAJE" />
+        </EntityType>
+        <Association Name="DETALLE_ACTIVIDAD_ACTIVIDAD_FK">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="DETALLE_ACTIVIDAD" Type="Self.DETALLE_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="DETALLE_ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PROFESIONAL_ACTIVIDAD_FK">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="PROFESIONAL">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ADMINISTRADOR_ROL_FK">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="ADMINISTRADOR" Type="Self.ADMINISTRADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="ADMINISTRADOR">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Check_List_cliente_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CHECK_LIST" Type="Self.CHECK_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Principal>
+            <Dependent Role="CHECK_LIST">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTE_ROL_FK">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_CLIENTE_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INTERACCION_CLIENTE_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="INTERACCION" Type="Self.INTERACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Principal>
+            <Dependent Role="INTERACCION">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGISTRO_ALERTA_CLIENTE_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="REGISTRO_ALERTA" Type="Self.REGISTRO_ALERTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Principal>
+            <Dependent Role="REGISTRO_ALERTA">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SOLICITUD_CLIENTE_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="SOLICITUD" Type="Self.SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Principal>
+            <Dependent Role="SOLICITUD">
+              <PropertyRef Name="RUT_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_ESTADO_CONTRATO_FK">
+          <End Role="ESTADO_CONTRATO" Type="Self.ESTADO_CONTRATO" Multiplicity="1" />
+          <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_CONTRATO">
+              <PropertyRef Name="ID_ESTADO" />
+            </Principal>
+            <Dependent Role="CONTRATO">
+              <PropertyRef Name="ESTADO_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLE_ACTIVIDAD_FK">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="1" />
+          <End Role="DETALLE_ACTIVIDAD" Type="Self.DETALLE_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Principal>
+            <Dependent Role="DETALLE_ACTIVIDAD">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ESTADO_ALERTA_FK">
+          <End Role="ESTADO_ALERTA" Type="Self.ESTADO_ALERTA" Multiplicity="1" />
+          <End Role="REGISTRO_ALERTA" Type="Self.REGISTRO_ALERTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_ALERTA">
+              <PropertyRef Name="ESTADO_ALERTA1" />
+            </Principal>
+            <Dependent Role="REGISTRO_ALERTA">
+              <PropertyRef Name="ESTADO_ALERTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ESTADO_INTERACCION_FK">
+          <End Role="ESTADO_INTERACCION" Type="Self.ESTADO_INTERACCION" Multiplicity="1" />
+          <End Role="INTERACCION" Type="Self.INTERACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_INTERACCION">
+              <PropertyRef Name="ID_ESTADO_INTERACCION" />
+            </Principal>
+            <Dependent Role="INTERACCION">
+              <PropertyRef Name="ESTADO_INTERACCION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SOLICITUD_ESTADO_SOLICITUD_FK">
+          <End Role="ESTADO_SOLICITUD" Type="Self.ESTADO_SOLICITUD" Multiplicity="1" />
+          <End Role="SOLICITUD" Type="Self.SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_SOLICITUD">
+              <PropertyRef Name="ID_ESTADO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUD">
+              <PropertyRef Name="ESTADO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TIPO_INTERACCION_FK">
+          <End Role="TIPO_INTERACCION" Type="Self.TIPO_INTERACCION" Multiplicity="1" />
+          <End Role="INTERACCION" Type="Self.INTERACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_INTERACCION">
+              <PropertyRef Name="ID_TIPO_INTERACCION" />
+            </Principal>
+            <Dependent Role="INTERACCION">
+              <PropertyRef Name="ID_TIPO_INTERACCION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PROFESIONAL_ROL_FK">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="PROFESIONAL">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VALORACIONES_PROFESIONAL_FK">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="1" />
+          <End Role="VALORACIONES" Type="Self.VALORACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Principal>
+            <Dependent Role="VALORACIONES">
+              <PropertyRef Name="ID_PROFESIONAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VALORACIONES_PUNTAJE_FK">
+          <End Role="PUNTAJE" Type="Self.PUNTAJE" Multiplicity="1" />
+          <End Role="VALORACIONES" Type="Self.VALORACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUNTAJE">
+              <PropertyRef Name="ID_PUNTAJE" />
+            </Principal>
+            <Dependent Role="VALORACIONES">
+              <PropertyRef Name="ID_PUNTAJE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGISTRO_ALERTA_TIPO_ALERTA_FK">
+          <End Role="TIPO_ALERTA" Type="Self.TIPO_ALERTA" Multiplicity="1" />
+          <End Role="REGISTRO_ALERTA" Type="Self.REGISTRO_ALERTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_ALERTA">
+              <PropertyRef Name="ID_TIPO" />
+            </Principal>
+            <Dependent Role="REGISTRO_ALERTA">
+              <PropertyRef Name="TIPO_ALERTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" />
+          <EntitySet Name="ADMINISTRADOR" EntityType="Self.ADMINISTRADOR" />
+          <EntitySet Name="CHECK_LIST" EntityType="Self.CHECK_LIST" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" />
+          <EntitySet Name="DETALLE_ACTIVIDAD" EntityType="Self.DETALLE_ACTIVIDAD" />
+          <EntitySet Name="ESTADO_ALERTA" EntityType="Self.ESTADO_ALERTA" />
+          <EntitySet Name="ESTADO_CONTRATO" EntityType="Self.ESTADO_CONTRATO" />
+          <EntitySet Name="ESTADO_INTERACCION" EntityType="Self.ESTADO_INTERACCION" />
+          <EntitySet Name="ESTADO_SOLICITUD" EntityType="Self.ESTADO_SOLICITUD" />
+          <EntitySet Name="INTERACCION" EntityType="Self.INTERACCION" />
+          <EntitySet Name="PAGO" EntityType="Self.PAGO" />
+          <EntitySet Name="PROFESIONAL" EntityType="Self.PROFESIONAL" />
+          <EntitySet Name="PUNTAJE" EntityType="Self.PUNTAJE" />
+          <EntitySet Name="REGISTRO_ALERTA" EntityType="Self.REGISTRO_ALERTA" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" />
+          <EntitySet Name="SOLICITUD" EntityType="Self.SOLICITUD" />
+          <EntitySet Name="TIPO_ALERTA" EntityType="Self.TIPO_ALERTA" />
+          <EntitySet Name="TIPO_INTERACCION" EntityType="Self.TIPO_INTERACCION" />
+          <EntitySet Name="VALORACIONES" EntityType="Self.VALORACIONES" />
+          <AssociationSet Name="DETALLE_ACTIVIDAD_ACTIVIDAD_FK" Association="Self.DETALLE_ACTIVIDAD_ACTIVIDAD_FK">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="DETALLE_ACTIVIDAD" EntitySet="DETALLE_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="PROFESIONAL_ACTIVIDAD_FK" Association="Self.PROFESIONAL_ACTIVIDAD_FK">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+          </AssociationSet>
+          <AssociationSet Name="ADMINISTRADOR_ROL_FK" Association="Self.ADMINISTRADOR_ROL_FK">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="ADMINISTRADOR" EntitySet="ADMINISTRADOR" />
+          </AssociationSet>
+          <AssociationSet Name="Check_List_cliente_FK" Association="Self.Check_List_cliente_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="CHECK_LIST" EntitySet="CHECK_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTE_ROL_FK" Association="Self.CLIENTE_ROL_FK">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_CLIENTE_FK" Association="Self.CONTRATO_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="INTERACCION_CLIENTE_FK" Association="Self.INTERACCION_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="INTERACCION" EntitySet="INTERACCION" />
+          </AssociationSet>
+          <AssociationSet Name="REGISTRO_ALERTA_CLIENTE_FK" Association="Self.REGISTRO_ALERTA_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="REGISTRO_ALERTA" EntitySet="REGISTRO_ALERTA" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUD_CLIENTE_FK" Association="Self.SOLICITUD_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_ESTADO_CONTRATO_FK" Association="Self.CONTRATO_ESTADO_CONTRATO_FK">
+            <End Role="ESTADO_CONTRATO" EntitySet="ESTADO_CONTRATO" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLE_ACTIVIDAD_FK" Association="Self.DETALLE_ACTIVIDAD_FK">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="DETALLE_ACTIVIDAD" EntitySet="DETALLE_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ESTADO_ALERTA_FK" Association="Self.ESTADO_ALERTA_FK">
+            <End Role="ESTADO_ALERTA" EntitySet="ESTADO_ALERTA" />
+            <End Role="REGISTRO_ALERTA" EntitySet="REGISTRO_ALERTA" />
+          </AssociationSet>
+          <AssociationSet Name="ESTADO_INTERACCION_FK" Association="Self.ESTADO_INTERACCION_FK">
+            <End Role="ESTADO_INTERACCION" EntitySet="ESTADO_INTERACCION" />
+            <End Role="INTERACCION" EntitySet="INTERACCION" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUD_ESTADO_SOLICITUD_FK" Association="Self.SOLICITUD_ESTADO_SOLICITUD_FK">
+            <End Role="ESTADO_SOLICITUD" EntitySet="ESTADO_SOLICITUD" />
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="TIPO_INTERACCION_FK" Association="Self.TIPO_INTERACCION_FK">
+            <End Role="TIPO_INTERACCION" EntitySet="TIPO_INTERACCION" />
+            <End Role="INTERACCION" EntitySet="INTERACCION" />
+          </AssociationSet>
+          <AssociationSet Name="PROFESIONAL_ROL_FK" Association="Self.PROFESIONAL_ROL_FK">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+          </AssociationSet>
+          <AssociationSet Name="VALORACIONES_PROFESIONAL_FK" Association="Self.VALORACIONES_PROFESIONAL_FK">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="VALORACIONES" EntitySet="VALORACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="VALORACIONES_PUNTAJE_FK" Association="Self.VALORACIONES_PUNTAJE_FK">
+            <End Role="PUNTAJE" EntitySet="PUNTAJE" />
+            <End Role="VALORACIONES" EntitySet="VALORACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="REGISTRO_ALERTA_TIPO_ALERTA_FK" Association="Self.REGISTRO_ALERTA_TIPO_ALERTA_FK">
+            <End Role="TIPO_ALERTA" EntitySet="TIPO_ALERTA" />
+            <End Role="REGISTRO_ALERTA" EntitySet="REGISTRO_ALERTA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="ACTIVIDAD">
+            <EntityTypeMapping TypeName="Model.ACTIVIDAD">
+              <MappingFragment StoreEntitySet="ACTIVIDAD">
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+                <ScalarProperty Name="NOMBRE_ACTIVIDAD" ColumnName="NOMBRE_ACTIVIDAD" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADMINISTRADOR">
+            <EntityTypeMapping TypeName="Model.ADMINISTRADOR">
+              <MappingFragment StoreEntitySet="ADMINISTRADOR">
+                <ScalarProperty Name="ID_ADMINISTRADOR" ColumnName="ID_ADMINISTRADOR" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="CONTRASENA_ADM" ColumnName="CONTRASENA_ADM" />
+                <ScalarProperty Name="NOMBRE_ADM" ColumnName="NOMBRE_ADM" />
+                <ScalarProperty Name="APELLIDO_ADM" ColumnName="APELLIDO_ADM" />
+                <ScalarProperty Name="TELEFONO_ADM" ColumnName="TELEFONO_ADM" />
+                <ScalarProperty Name="CORREO_ADM" ColumnName="CORREO_ADM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHECK_LIST">
+            <EntityTypeMapping TypeName="Model.CHECK_LIST">
+              <MappingFragment StoreEntitySet="CHECK_LIST">
+                <ScalarProperty Name="ID_FORMULARIO" ColumnName="ID_FORMULARIO" />
+                <ScalarProperty Name="RUT_CLIENTE" ColumnName="RUT_CLIENTE" />
+                <ScalarProperty Name="PREGUNTA_1" ColumnName="PREGUNTA_1" />
+                <ScalarProperty Name="PREGUNTA_2" ColumnName="PREGUNTA_2" />
+                <ScalarProperty Name="PREGUNTA_3" ColumnName="PREGUNTA_3" />
+                <ScalarProperty Name="PREGUNTA_4" ColumnName="PREGUNTA_4" />
+                <ScalarProperty Name="PREGUNTE_5" ColumnName="PREGUNTE_5" />
+                <ScalarProperty Name="PREGUNTE_6" ColumnName="PREGUNTE_6" />
+                <ScalarProperty Name="PREGUNTA_7" ColumnName="PREGUNTA_7" />
+                <ScalarProperty Name="PREGUNTA_8" ColumnName="PREGUNTA_8" />
+                <ScalarProperty Name="PREGUNTA_9" ColumnName="PREGUNTA_9" />
+                <ScalarProperty Name="MEJORA_ACTIVIDAD" ColumnName="MEJORA_ACTIVIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="Model.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="RUT_CLIENTE" ColumnName="RUT_CLIENTE" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="CONTRASENA_CLIENTE" ColumnName="CONTRASENA_CLIENTE" />
+                <ScalarProperty Name="NOMBRE_CLIENTE" ColumnName="NOMBRE_CLIENTE" />
+                <ScalarProperty Name="APELLIDO_CLIENTE" ColumnName="APELLIDO_CLIENTE" />
+                <ScalarProperty Name="NOMBRE_EMPRESA" ColumnName="NOMBRE_EMPRESA" />
+                <ScalarProperty Name="RUBRO_EMPRESA" ColumnName="RUBRO_EMPRESA" />
+                <ScalarProperty Name="TELEFONO_CLIENTE" ColumnName="TELEFONO_CLIENTE" />
+                <ScalarProperty Name="CORREO_CLIENTE" ColumnName="CORREO_CLIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATO">
+            <EntityTypeMapping TypeName="Model.CONTRATO">
+              <MappingFragment StoreEntitySet="CONTRATO">
+                <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
+                <ScalarProperty Name="RUT_CLIENTE" ColumnName="RUT_CLIENTE" />
+                <ScalarProperty Name="ESTADO_CONTRATO" ColumnName="ESTADO_CONTRATO" />
+                <ScalarProperty Name="FECHA_INICIO_CONTRATO" ColumnName="FECHA_INICIO_CONTRATO" />
+                <ScalarProperty Name="FECHA_TERMINO_CONTRATO" ColumnName="FECHA_TERMINO_CONTRATO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_ACTIVIDAD">
+            <EntityTypeMapping TypeName="Model.DETALLE_ACTIVIDAD">
+              <MappingFragment StoreEntitySet="DETALLE_ACTIVIDAD">
+                <ScalarProperty Name="REGISTRO_ACTIVIDAD" ColumnName="REGISTRO_ACTIVIDAD" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+                <ScalarProperty Name="ID_PROFESIONAL" ColumnName="ID_PROFESIONAL" />
+                <ScalarProperty Name="UBICACION" ColumnName="UBICACION" />
+                <ScalarProperty Name="FECHA_ACTIVIDAD" ColumnName="FECHA_ACTIVIDAD" />
+                <ScalarProperty Name="ASISTENTE" ColumnName="ASISTENTE" />
+                <ScalarProperty Name="MATERIAL" ColumnName="MATERIAL" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_ALERTA">
+            <EntityTypeMapping TypeName="Model.ESTADO_ALERTA">
+              <MappingFragment StoreEntitySet="ESTADO_ALERTA">
+                <ScalarProperty Name="ESTADO_ALERTA1" ColumnName="ESTADO_ALERTA" />
+                <ScalarProperty Name="NOMBRE_ESTADO" ColumnName="NOMBRE_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_CONTRATO">
+            <EntityTypeMapping TypeName="Model.ESTADO_CONTRATO">
+              <MappingFragment StoreEntitySet="ESTADO_CONTRATO">
+                <ScalarProperty Name="ID_ESTADO" ColumnName="ID_ESTADO" />
+                <ScalarProperty Name="TIPO_ESTADO" ColumnName="TIPO_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_INTERACCION">
+            <EntityTypeMapping TypeName="Model.ESTADO_INTERACCION">
+              <MappingFragment StoreEntitySet="ESTADO_INTERACCION">
+                <ScalarProperty Name="ID_ESTADO_INTERACCION" ColumnName="ID_ESTADO_INTERACCION" />
+                <ScalarProperty Name="ESTADO_INTERACCION1" ColumnName="ESTADO_INTERACCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_SOLICITUD">
+            <EntityTypeMapping TypeName="Model.ESTADO_SOLICITUD">
+              <MappingFragment StoreEntitySet="ESTADO_SOLICITUD">
+                <ScalarProperty Name="ID_ESTADO_SOLICITUD" ColumnName="ID_ESTADO_SOLICITUD" />
+                <ScalarProperty Name="ESTADO_SOLICITUD1" ColumnName="ESTADO_SOLICITUD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INTERACCION">
+            <EntityTypeMapping TypeName="Model.INTERACCION">
+              <MappingFragment StoreEntitySet="INTERACCION">
+                <ScalarProperty Name="ID_INTERACCION" ColumnName="ID_INTERACCION" />
+                <ScalarProperty Name="RUT_CLIENTE" ColumnName="RUT_CLIENTE" />
+                <ScalarProperty Name="FECHA_INTERACCION" ColumnName="FECHA_INTERACCION" />
+                <ScalarProperty Name="ESTADO_INTERACCION" ColumnName="ESTADO_INTERACCION" />
+                <ScalarProperty Name="ID_TIPO_INTERACCION" ColumnName="ID_TIPO_INTERACCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAGO">
+            <EntityTypeMapping TypeName="Model.PAGO">
+              <MappingFragment StoreEntitySet="PAGO">
+                <ScalarProperty Name="ID_PAGO" ColumnName="ID_PAGO" />
+                <ScalarProperty Name="RUT_PAGO" ColumnName="RUT_PAGO" />
+                <ScalarProperty Name="FECHA_PAGO" ColumnName="FECHA_PAGO" />
+                <ScalarProperty Name="VALOR_PAGO" ColumnName="VALOR_PAGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROFESIONAL">
+            <EntityTypeMapping TypeName="Model.PROFESIONAL">
+              <MappingFragment StoreEntitySet="PROFESIONAL">
+                <ScalarProperty Name="ID_PROFESIONAL" ColumnName="ID_PROFESIONAL" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+                <ScalarProperty Name="CONTRASENA_PRO" ColumnName="CONTRASENA_PRO" />
+                <ScalarProperty Name="NOMBRE_PRO" ColumnName="NOMBRE_PRO" />
+                <ScalarProperty Name="APELLIDO_PRO" ColumnName="APELLIDO_PRO" />
+                <ScalarProperty Name="TELEFONO_PRO" ColumnName="TELEFONO_PRO" />
+                <ScalarProperty Name="CORREO_PRO" ColumnName="CORREO_PRO" />
+                <ScalarProperty Name="CALIFICACION" ColumnName="CALIFICACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUNTAJE">
+            <EntityTypeMapping TypeName="Model.PUNTAJE">
+              <MappingFragment StoreEntitySet="PUNTAJE">
+                <ScalarProperty Name="ID_PUNTAJE" ColumnName="ID_PUNTAJE" />
+                <ScalarProperty Name="PUNTAJE1" ColumnName="PUNTAJE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGISTRO_ALERTA">
+            <EntityTypeMapping TypeName="Model.REGISTRO_ALERTA">
+              <MappingFragment StoreEntitySet="REGISTRO_ALERTA">
+                <ScalarProperty Name="ID_ALERTA" ColumnName="ID_ALERTA" />
+                <ScalarProperty Name="TIPO_ALERTA" ColumnName="TIPO_ALERTA" />
+                <ScalarProperty Name="RUT_CLIENTE" ColumnName="RUT_CLIENTE" />
+                <ScalarProperty Name="FECHA_ALERTA" ColumnName="FECHA_ALERTA" />
+                <ScalarProperty Name="DESCRIPCION_ALERTA" ColumnName="DESCRIPCION_ALERTA" />
+                <ScalarProperty Name="ESTADO_ALERTA" ColumnName="ESTADO_ALERTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROL">
+            <EntityTypeMapping TypeName="Model.ROL">
+              <MappingFragment StoreEntitySet="ROL">
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="NOMBRE_ROL" ColumnName="NOMBRE_ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOLICITUD">
+            <EntityTypeMapping TypeName="Model.SOLICITUD">
+              <MappingFragment StoreEntitySet="SOLICITUD">
+                <ScalarProperty Name="ID_SOLICITUD" ColumnName="ID_SOLICITUD" />
+                <ScalarProperty Name="RUT_CLIENTE" ColumnName="RUT_CLIENTE" />
+                <ScalarProperty Name="UBICACION_SOLICITUD" ColumnName="UBICACION_SOLICITUD" />
+                <ScalarProperty Name="FECHA_SOLICITUD" ColumnName="FECHA_SOLICITUD" />
+                <ScalarProperty Name="FECHA_RESOLUCION" ColumnName="FECHA_RESOLUCION" />
+                <ScalarProperty Name="PROFESIONAL_ASIGNADO" ColumnName="PROFESIONAL_ASIGNADO" />
+                <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+                <ScalarProperty Name="ASISTENTE_SOLICITUD" ColumnName="ASISTENTE_SOLICITUD" />
+                <ScalarProperty Name="ESTADO_SOLICITUD" ColumnName="ESTADO_SOLICITUD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_ALERTA">
+            <EntityTypeMapping TypeName="Model.TIPO_ALERTA">
+              <MappingFragment StoreEntitySet="TIPO_ALERTA">
+                <ScalarProperty Name="ID_TIPO" ColumnName="ID_TIPO" />
+                <ScalarProperty Name="TIPO_ALERTA1" ColumnName="TIPO_ALERTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_INTERACCION">
+            <EntityTypeMapping TypeName="Model.TIPO_INTERACCION">
+              <MappingFragment StoreEntitySet="TIPO_INTERACCION">
+                <ScalarProperty Name="ID_TIPO_INTERACCION" ColumnName="ID_TIPO_INTERACCION" />
+                <ScalarProperty Name="TIPO_INTERACCION1" ColumnName="TIPO_INTERACCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VALORACIONES">
+            <EntityTypeMapping TypeName="Model.VALORACIONES">
+              <MappingFragment StoreEntitySet="VALORACIONES">
+                <ScalarProperty Name="ID_PROFESIONAL" ColumnName="ID_PROFESIONAL" />
+                <ScalarProperty Name="VALORACION" ColumnName="VALORACION" />
+                <ScalarProperty Name="ACTIVIDAD_DESARROLLADA" ColumnName="ACTIVIDAD_DESARROLLADA" />
+                <ScalarProperty Name="ID_PUNTAJE" ColumnName="ID_PUNTAJE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,20 @@
+﻿<Window x:Class="Front.Administrador.Administrador_actividad"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Front.Administrador"
+        mc:Ignorable="d"
+        Title="Administrador_actividad" Height="450" Width="800">
+    <Grid>
+        <Button Content="Volver" HorizontalAlignment="Left" Margin="36,31,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Content="Actividades" HorizontalAlignment="Left" Margin="311,31,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+        <DataGrid x:Name="datGrid_ListDetalle" HorizontalAlignment="Left" Height="186" Margin="36,223,0,0" VerticalAlignment="Top" Width="466" Loaded="datGrid_ListDetalle_Loaded"/>
+        <DataGrid x:Name="datGrid_ListActividad" HorizontalAlignment="Left" Height="186" Margin="537,223,0,0" VerticalAlignment="Top" Width="245" SelectionChanged="datGrid_ListActividad1_SelectionChanged" Loaded="datGrid_ListActividad_Loaded"/>
+        <Label Content="Listado de detalle de actividades " HorizontalAlignment="Left" Margin="36,192,0,0" VerticalAlignment="Top"/>
+        <Label Content="Listado de actividades " HorizontalAlignment="Left" Margin="537,192,0,0" VerticalAlignment="Top"/>
+        <Button Content="Crear nuevo detalle de actividad" HorizontalAlignment="Left" Margin="329,192,0,0" VerticalAlignment="Top" Width="173"/>
+        <Button Content="Crear actividad" HorizontalAlignment="Left" Margin="693,192,0,0" VerticalAlignment="Top" Width="89"/>
+
+    </Grid>
+</Window>

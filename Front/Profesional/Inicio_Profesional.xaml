@@ -1,0 +1,21 @@
+﻿<Window x:Class="Front.Profesional.Inicio_Profesional"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Front.Profesional"
+        mc:Ignorable="d"
+        Title="Inicio_Profesional" Height="450" Width="800">
+    <Grid>
+        <Label Content="Bienvenido" HorizontalAlignment="Left" Margin="216,14,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+        <Label Content="Insertar nombre de usuario xd" HorizontalAlignment="Left" Margin="357,22,0,0" VerticalAlignment="Top" Height="34" Width="230" FontSize="16"/>
+        <Button Content="Cerrar sesion" HorizontalAlignment="Left" Margin="701,19,0,0" VerticalAlignment="Top" Width="81" Height="26" Click="Button_CerrarSesion"/>
+        <Button Content="Ver alertas" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" Width="95" Height="26"/>
+        <DataGrid x:Name="datGrid_ListActividades" HorizontalAlignment="Left" Height="175" Margin="10,234,0,0" VerticalAlignment="Top" Width="371" Loaded="Load"/>
+        <Button Content="Registrar nueva actividad" HorizontalAlignment="Left" Margin="242,192,0,0" VerticalAlignment="Top" Width="139" Height="36"/>
+        <Label Content="LISTA DE ACTIVIDADES " HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold"/>
+        <DataGrid x:Name="datGrid_ListAlertas" HorizontalAlignment="Left" Height="93" Margin="10,83,0,0" VerticalAlignment="Top" Width="170" Loaded="DataGrid_Loaded"/>
+        <Label Content="LISTA DE ALERTAS" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold"/>
+
+    </Grid>
+</Window>

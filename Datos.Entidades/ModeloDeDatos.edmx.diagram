@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71c61a7f7e794ac5a15d316ee8945646" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.ACTIVIDAD" Width="1.5" PointX="5.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ADMINISTRADOR" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CHECK_LIST" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CLIENTE" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CONTRATO" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DETALLE_ACTIVIDAD" Width="1.5" PointX="10.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ESTADO_ALERTA" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ESTADO_CONTRATO" Width="1.5" PointX="6" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ESTADO_INTERACCION" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ESTADO_SOLICITUD" Width="1.5" PointX="6" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.INTERACCION" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PAGO" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PROFESIONAL" Width="1.5" PointX="8" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PUNTAJE" Width="1.5" PointX="11" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REGISTRO_ALERTA" Width="1.5" PointX="5.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ROL" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SOLICITUD" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TIPO_ALERTA" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TIPO_INTERACCION" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VALORACIONES" Width="1.5" PointX="13.25" PointY="20.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.DETALLE_ACTIVIDAD_ACTIVIDAD_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PROFESIONAL_ACTIVIDAD_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ADMINISTRADOR_ROL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Check_List_cliente_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.CLIENTE_ROL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.CONTRATO_CLIENTE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.INTERACCION_CLIENTE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.REGISTRO_ALERTA_CLIENTE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SOLICITUD_CLIENTE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.CONTRATO_ESTADO_CONTRATO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.DETALLE_ACTIVIDAD_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ESTADO_ALERTA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ESTADO_INTERACCION_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SOLICITUD_ESTADO_SOLICITUD_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.TIPO_INTERACCION_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PROFESIONAL_ROL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.VALORACIONES_PROFESIONAL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.VALORACIONES_PUNTAJE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.REGISTRO_ALERTA_TIPO_ALERTA_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
